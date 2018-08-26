@@ -1,5 +1,6 @@
 #ifndef _DYNAMIC_A_H_
 #define _DYNAMIC_A_H_
+#include <cstddef>
 
 // Factor used to increase capacity for DynamicArrays
 const size_t DA_FACTOR = 2; 
@@ -20,9 +21,10 @@ public:
     // Modifiers
     void push(const T &elem); // O(1), reallocation may occur
     T pop(); // O(1)
-    T get(const int idx); // O(1)
+    
 
-    // Capacity & Print
+    // Utility & Print
+    T get(const int idx) const; // O(1)
     size_t size() const; // O(1)
     size_t capacity() const; // O(1)
     bool isEmpty() const; // O(1)
@@ -34,22 +36,19 @@ public:
 // Resize the DynamicArray
 template <class T> 
 size_t DynamicArray<T>::resize(){
-    size_t newCapacity = daCapacity * DA_FACTOR;
-    T *temp;
-
     try{
-        temp = new T[newCapacity];
+        size_t newCapacity = daCapacity * DA_FACTOR;
+        T *temp = new T[newCapacity];
+        for(int i = 0; i < daSize; ++i) temp[i] = da[i]; // Copy data to the bigger array
+
+        delete[] da; // Free the old memory
+        da = temp;
+        daCapacity = newCapacity;
+
+        return daCapacity;
     }catch(const std::bad_alloc &e){
         throw;
     }
-   
-    for(int i = 0; i < daSize; ++i) temp[i] = da[i]; // Copy data to the bigger array
-
-    delete[] da; // Free the old memory
-    da = temp;
-    daCapacity = newCapacity;
-
-    return daCapacity;
 }
 
 // Constructor
@@ -89,8 +88,8 @@ T DynamicArray<T>::pop(){
 
 // Return the item at index idx
 template <class T>
-T DynamicArray<T>::get(const int idx){
-    if(idx >= daSize){
+T DynamicArray<T>::get(const int idx) const{
+    if(idx >= daSize || idx < 0){
         T trash{};
         std::cerr << "Index out of range" << std::endl;
         return trash;
