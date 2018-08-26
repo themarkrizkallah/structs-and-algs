@@ -48,6 +48,7 @@ $ ./bin/exec
 
 ## Modules
 The project currently supports:
-- DynamicArrays
+- DynamicArray
+- LinkedList
 
 More modules will be added soon.
