@@ -1,4 +1,4 @@
-# structs-and-algths
+# structs-and-algs
 C++ modules of useful data structures, searching algorithms, and sorting algorithms. 
 
 # Getting Started
