@@ -1,7 +1,8 @@
 #ifndef _DYNAMIC_A_H_
 #define _DYNAMIC_A_H_
 
-const size_t FACTOR = 2; // Factor used to increase capacity
+// Factor used to increase capacity for DynamicArrays
+const size_t DA_FACTOR = 2; 
 
 template <class T> 
 class DynamicArray final{
@@ -25,13 +26,15 @@ public:
     size_t size() const; // O(1)
     size_t capacity() const; // O(1)
     bool isEmpty() const; // O(1)
-    void print() const;
+    void print() const; // O(1)
 };
 
-/* Resize the array */
-template <class T>
+/* Implementation */
+
+// Resize the DynamicArray
+template <class T> 
 size_t DynamicArray<T>::resize(){
-    size_t newCapacity = daCapacity * FACTOR;
+    size_t newCapacity = daCapacity * DA_FACTOR;
     T *temp;
 
     try{
@@ -49,16 +52,17 @@ size_t DynamicArray<T>::resize(){
     return daCapacity;
 }
 
-/* Constructor & Destructor */
+// Constructor
 template <class T>
 DynamicArray<T>::DynamicArray(): da{nullptr}, daSize{0}, daCapacity{0}{}
 
+// Destructor
 template <class T>
 DynamicArray<T>::~DynamicArray(){
     delete[] da;
 }
 
-/* Modifiers */
+// Push elem to the end of the DynamicArray
 template <class T>
 void DynamicArray<T>::push(const T &elem){
     size_t newSize = daSize + 1;
@@ -76,12 +80,14 @@ void DynamicArray<T>::push(const T &elem){
     daSize = newSize;
 }
 
+// Remove the last element from the DynamicArray
 template <class T>
 T DynamicArray<T>::pop(){
     --daSize;
     return da[daSize];
 }
 
+// Return the item at index idx
 template <class T>
 T DynamicArray<T>::get(const int idx){
     if(idx >= daSize){
@@ -93,22 +99,25 @@ T DynamicArray<T>::get(const int idx){
     return da[idx];
 }
 
-/* Capacity & Print*/
+// Return the size (# of elements) of the DynamicArray
 template <class T>
 size_t DynamicArray<T>::size() const{
     return daSize;
 }
 
+// Return the capacity of the DynamicArray
 template <class T>
 size_t DynamicArray<T>::capacity() const{
     return daCapacity;
 }
 
+// Return true if the DynamicArray is empty and false otherwise
 template <class T>
 bool DynamicArray<T>::isEmpty() const{
     return daSize == 0;
 }
 
+// Print the DynamicArray in the form '[x1, x2, ..., xn]'
 template <class T>
 void DynamicArray<T>::print() const{
     std::cout << '[';
