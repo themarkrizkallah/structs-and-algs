@@ -3,7 +3,8 @@
 #include <cstddef>
 #include <unordered_set>
 
-/* Linked List */
+class EmptyStackException{};
+
 template <class T>
 class LinkedList final{
     struct Node{
@@ -11,8 +12,8 @@ class LinkedList final{
         Node *next = nullptr;
     };
 
-    size_t length;
     Node *head;
+    size_t length;
 
 public:
     // Constructor & Destructor
@@ -33,26 +34,23 @@ public:
     void print() const; // O(n)
 };
 
-/* LinkedList - Implementation */
-
 // Constructor
 template <class T>
-LinkedList<T>::LinkedList(): length{0}, head{nullptr}{}
+LinkedList<T>::LinkedList(): head{nullptr}, length{0}{}
 
 // Destructor
 template <class T>
 LinkedList<T>::~LinkedList(){
     Node *temp;
-    Node *curr = head;
 
-    while(curr){
-        temp = curr->next;
-        delete curr;
-        curr = temp;
+    while(head){
+        temp = head->next;
+        delete head;
+        head = temp;
     }
 }
 
-// Adds a new Node to the beginning of the singly linked list
+// Adds a new Node to the beginning
 template <class T>
 void LinkedList<T>::appendToHead(const T &data){
     try{
@@ -65,7 +63,7 @@ void LinkedList<T>::appendToHead(const T &data){
     }
 }
 
-// Appends a new Node to the singly linked list
+// Appends a new Node
 template <class T>
 void LinkedList<T>::appendToTail(const T &data){
     try{
@@ -138,24 +136,24 @@ void LinkedList<T>::removeDups(){
     }
 }
 
-// Returns the # of Nodes in the singly linked list
+// Returns the # of Nodes
 template <class T>
 size_t LinkedList<T>::size() const{
     return length;
 }
 
-// Returns true if there are no Nodes in the singly linked list and false otherwise
+// Returns true if there are no Nodes in the linked list and false otherwise
 template <class T>
 bool LinkedList<T>::isEmpty() const{
     return length == 0;
 }
 
-// Prints the elements of the singly linked list in the form x1 -> x2 -> ... -> xn
+// Prints the elements of the linked list in the form x1 -> x2 -> ... -> xn
 template <class T>
 void LinkedList<T>::print() const{
     Node *curr = head;
 
-    if(!curr) std::cout << "List is empty";
+    if(!curr) std::cout << "empty";
 
     while(curr){
         std::cout << curr->data;

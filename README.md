@@ -50,5 +50,6 @@ $ ./bin/exec
 The project currently supports:
 - DynamicArray
 - LinkedList
+- Stack
 
 More modules will be added soon.

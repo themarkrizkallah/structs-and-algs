@@ -3,6 +3,7 @@
 
 #include "../include/data-structs/dynamic-array.h"
 #include "../include/data-structs/linked-list.h"
+#include "../include/data-structs/stack.h"
 
 using namespace std;
 
@@ -99,5 +100,30 @@ int main(){
     theList.print();
     cout << endl;
 */
+/*
+    // Stack Tests
+    Stack<int> s;
+    cout << "The stack is ";
+    s.print();
+    cout << endl;
+
+    s.push(5);
+    s.push(4);
+    s.push(3);
+    s.push(2);
+    s.push(1);
+
+    cout << "The stack: ";
+    s.print();
+    cout << endl;
+
+    cout << "The stack has " << s.size() << "elements" << endl;
+
+    cout << "Popping" << endl;
+    s.pop();
+    cout << "The stack: ";
+    s.print();
+    cout << endl;    
     return 0;
+*/
 }
