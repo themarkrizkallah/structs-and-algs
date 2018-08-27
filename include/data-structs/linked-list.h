@@ -161,4 +161,69 @@ void LinkedList<T>::print() const{
         curr = curr->next;
     }
 }
+
+/*
+    // LinkedList Tests
+    LinkedList<int> theList;
+
+    cout << "Is the list empty? " << (theList.isEmpty() ? "yes" : "no") << endl;
+    cout << "List has " << theList.size() << " nodes";
+
+    theList.print();
+    cout << endl;
+
+    theList.appendToHead(3);
+    theList.print();
+    cout << endl;
+
+    theList.appendToHead(2);
+    theList.print();
+    cout << endl;
+
+    theList.appendToTail(4);
+    theList.print();
+    cout << endl;
+
+    theList.appendToTail(5);
+    theList.print();
+    cout << endl;
+
+    theList.appendToHead(1);
+    theList.print();
+    cout << endl;
+
+    theList.appendToHead(1);
+    theList.print();
+    cout << endl;
+
+    theList.appendToHead(4);
+    theList.print();
+    cout << endl;
+
+    cout << "Is the list empty? " << (theList.isEmpty() ? "yes" : "no") << endl;
+    cout << "List has " << theList.size() << " nodes" << endl;
+
+    cout << "Remove duplicates" << endl;
+    theList.removeDups();
+    theList.print();
+    cout << endl;
+
+    cout << "Deleting head" << endl;
+    theList.deleteIndex(0);
+    theList.print();
+    cout << endl;
+
+    cout << "Length is now " << theList.size() << endl;
+
+    cout << "Deleting tail" << endl;
+    theList.deleteIndex(theList.size() - 1);
+    theList.print();
+    cout << endl;
+
+    cout << "Deleting index: 1" << endl;
+    theList.deleteIndex(1);
+    theList.print();
+    cout << endl;
+*/
+
 #endif

@@ -51,5 +51,6 @@ The project currently supports:
 - DynamicArray
 - LinkedList
 - Stack
+- Queue
 
 More modules will be added soon.

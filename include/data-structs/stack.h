@@ -26,7 +26,6 @@ public:
     size_t size() const; // O(1)
     bool isEmpty() const; // O(1)
     void print() const; // O(n)
-
 };
 
 // Constructor
@@ -100,5 +99,31 @@ void Stack<T>::print() const{
         curr = curr->next;
     }
 }
+
+/*
+    // Stack Tests
+    Stack<int> s;
+    cout << "The stack is ";
+    s.print();
+    cout << endl;
+
+    s.push(5);
+    s.push(4);
+    s.push(3);
+    s.push(2);
+    s.push(1);
+
+    cout << "The stack: ";
+    s.print();
+    cout << endl;
+
+    cout << "The stack has " << s.size() << "elements" << endl;
+
+    cout << "Popping" << endl;
+    s.pop();
+    cout << "The stack: ";
+    s.print();
+    cout << endl;    
+*/
 
 #endif

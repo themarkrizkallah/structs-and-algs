@@ -129,4 +129,31 @@ void DynamicArray<T>::print() const{
     std::cout << ']';
 }
 
+/*
+    // DynamicArray Tests
+    DynamicArray<int> da{};
+    cout << "Empty DynamicArray: ";
+    da.print();
+    cout << endl;
+
+    da.push(1);
+    cout << "DynamicArray: ";
+    da.print();
+    cout << endl;
+
+    da.push(2);
+    cout << "DynamicArray: ";
+    da.print();
+    cout << endl;
+    
+    da.push(3);
+    cout << "DynamicArray: ";
+    da.print();
+    cout << endl;
+
+    cout << da.get(0) << endl;
+    cout << da.get(1) << endl;
+    cout << da.get(2) << endl;
+*/
+
 #endif
