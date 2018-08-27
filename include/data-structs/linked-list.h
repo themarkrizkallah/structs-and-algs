@@ -1,10 +1,11 @@
 #ifndef _LINKED_LIST_H
 #define _LINKED_LIST_H
 #include <cstddef>
+#include <unordered_set>
 
-/* Singly Linked List */
+/* Linked List */
 template <class T>
-class SinglyLinkedList final{
+class LinkedList final{
     struct Node{
         T data;
         Node *next = nullptr;
@@ -15,14 +16,15 @@ class SinglyLinkedList final{
 
 public:
     // Constructor & Destructor
-    explicit SinglyLinkedList();
-    ~SinglyLinkedList();
+    explicit LinkedList();
+    ~LinkedList();
 
     // Modifiers
     void appendToHead(const T &data); // O(n)
     void appendToTail(const T &data); // O(n)
     void deleteNode(const T &data); // O(n)
     void deleteIndex(const int idx); // O(n)
+    void removeDups(); // O(n)
 
     // Utility & Print
     T get(const int idx) const; // O(1)
@@ -31,15 +33,15 @@ public:
     void print() const; // O(n)
 };
 
-/* SinglyLinkedList - Implementation */
+/* LinkedList - Implementation */
 
 // Constructor
 template <class T>
-SinglyLinkedList<T>::SinglyLinkedList(): length{0}, head{nullptr}{}
+LinkedList<T>::LinkedList(): length{0}, head{nullptr}{}
 
 // Destructor
 template <class T>
-SinglyLinkedList<T>::~SinglyLinkedList(){
+LinkedList<T>::~LinkedList(){
     Node *temp;
     Node *curr = head;
 
@@ -52,7 +54,7 @@ SinglyLinkedList<T>::~SinglyLinkedList(){
 
 // Adds a new Node to the beginning of the singly linked list
 template <class T>
-void SinglyLinkedList<T>::appendToHead(const T &data){
+void LinkedList<T>::appendToHead(const T &data){
     try{
         Node *newNode = new Node{data, head};
         head = newNode;
@@ -65,7 +67,7 @@ void SinglyLinkedList<T>::appendToHead(const T &data){
 
 // Appends a new Node to the singly linked list
 template <class T>
-void SinglyLinkedList<T>::appendToTail(const T &data){
+void LinkedList<T>::appendToTail(const T &data){
     try{
         Node *newNode = new Node{data};
         Node *end = head;
@@ -84,7 +86,7 @@ void SinglyLinkedList<T>::appendToTail(const T &data){
 
 // Deletes a node with specific value data
 template<class T>
-void SinglyLinkedList<T>::deleteNode(const T &data){
+void LinkedList<T>::deleteNode(const T &data){
     Node *temp;
     Node *curr = head;
 
@@ -95,7 +97,7 @@ void SinglyLinkedList<T>::deleteNode(const T &data){
 
 // Deletes a node at index idx
 template <class T>
-void SinglyLinkedList<T>::deleteIndex(const int idx){
+void LinkedList<T>::deleteIndex(const int idx){
     if(idx < length && idx >= 0){
         Node *prev;
         Node *curr = head;
@@ -114,21 +116,43 @@ void SinglyLinkedList<T>::deleteIndex(const int idx){
     }else std::cerr << "Index out of range." << std::endl;
 }
 
+// Removes duplicates
+template <class T>
+void LinkedList<T>::removeDups(){
+    std::unordered_set<T> dict;
+    Node *prev;
+    Node *curr = head;
+
+    while(curr){
+        const T data = curr->data;
+        if(dict.find(data) == dict.end()){
+            dict.emplace(data);
+            prev = curr;
+            curr = curr->next;
+        }else{
+            prev->next = curr->next;
+            delete curr;
+            --length;
+            curr = prev->next;
+        }
+    }
+}
+
 // Returns the # of Nodes in the singly linked list
 template <class T>
-size_t SinglyLinkedList<T>::size() const{
+size_t LinkedList<T>::size() const{
     return length;
 }
 
 // Returns true if there are no Nodes in the singly linked list and false otherwise
 template <class T>
-bool SinglyLinkedList<T>::isEmpty() const{
+bool LinkedList<T>::isEmpty() const{
     return length == 0;
 }
 
 // Prints the elements of the singly linked list in the form x1 -> x2 -> ... -> xn
 template <class T>
-void SinglyLinkedList<T>::print() const{
+void LinkedList<T>::print() const{
     Node *curr = head;
 
     if(!curr) std::cout << "List is empty";
@@ -138,5 +162,5 @@ void SinglyLinkedList<T>::print() const{
         if(curr->next) std::cout << " -> ";
         curr = curr->next;
     }
-} 
+}
 #endif

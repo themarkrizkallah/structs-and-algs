@@ -6,10 +6,11 @@
 
 using namespace std;
 
+
 int main(){
     // Will change later
 
-    /*
+/*
     // DynamicArray Tests
     DynamicArray<int> da{};
     cout << "Empty DynamicArray: ";
@@ -34,9 +35,10 @@ int main(){
     cout << da.get(0) << endl;
     cout << da.get(1) << endl;
     cout << da.get(2) << endl;
-
-    // SinglyLinkedList Tests
-    SinglyLinkedList<int> theList;
+*/
+/*
+    // LinkedList Tests
+    LinkedList<int> theList;
 
     cout << "Is the list empty? " << (theList.isEmpty() ? "yes" : "no") << endl;
     cout << "List has " << theList.size() << " nodes";
@@ -64,13 +66,28 @@ int main(){
     theList.print();
     cout << endl;
 
+    theList.appendToHead(1);
+    theList.print();
+    cout << endl;
+
+    theList.appendToHead(4);
+    theList.print();
+    cout << endl;
+
     cout << "Is the list empty? " << (theList.isEmpty() ? "yes" : "no") << endl;
     cout << "List has " << theList.size() << " nodes" << endl;
+
+    cout << "Remove duplicates" << endl;
+    theList.removeDups();
+    theList.print();
+    cout << endl;
 
     cout << "Deleting head" << endl;
     theList.deleteIndex(0);
     theList.print();
     cout << endl;
+
+    cout << "Length is now " << theList.size() << endl;
 
     cout << "Deleting tail" << endl;
     theList.deleteIndex(theList.size() - 1);
@@ -81,6 +98,6 @@ int main(){
     theList.deleteIndex(1);
     theList.print();
     cout << endl;
-    */
+*/
     return 0;
 }
