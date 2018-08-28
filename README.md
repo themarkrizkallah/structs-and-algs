@@ -47,10 +47,15 @@ $ ./bin/exec
 ```
 
 ## Modules
-The project currently supports:
+Data-structures currently supported:
 - DynamicArray
 - LinkedList
 - Stack
 - Queue
+
+Sorting algorithms currently supported:
+- Bubble Sort
+- Selection Sort
+- Merge Sort
 
 More modules will be added soon.
